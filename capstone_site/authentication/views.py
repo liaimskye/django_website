@@ -7,6 +7,16 @@ from django.contrib.auth.forms import UserCreationForm
 # Create your views here.
 
 def user_login(request): 
+    """Takes in an http request and renders an html login page.
+
+
+:param request: an http request for a page.
+:type request: str.
+
+:return: render,login.html.
+:rtype: html page.
+
+"""
     return render(request,'authentication:login.html')
 
 def user_authenticate(request): 
@@ -38,7 +48,16 @@ def register(response):
     return render(response, 'register.html', {'form':form})
 
 def log_out(request):
+    """Logs out the user and renders the log in page.
+    
+
+:param request: an http request for a page.
+:type request: str.
+
+:return: render,landing.html.
+:rtype: html page.
+
+"""
     logout
     return  render(request,'base:landing')
-
 
