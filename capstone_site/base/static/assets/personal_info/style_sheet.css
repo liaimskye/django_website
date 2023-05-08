@@ -1,0 +1,31 @@
+
+h1 {
+    color:rgb(255, 255, 255);
+    
+    font-family:"personalfont";
+    font-size:80px;
+    text-align:start;
+    
+}
+
+
+p{
+color:black;
+font-size: medium;
+
+}
+
+
+img {
+    width: 160px;
+    height: auto;
+}
+
+img.round{
+    border-radius: 30px;
+}
+
+@font-face {
+    font-family:'personalfont';
+    src:url("SairaCondensed-Black.ttf");
+  }

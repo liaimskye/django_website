@@ -1,0 +1,434 @@
+{% load static %}
+<!DOCTYPE html>
+<HTML>
+    <head>
+      <style>
+
+          .c-item{
+            height: 480px;
+        }
+        
+        .c-image{
+            height: 100%;
+            object-fit: cover;
+        }
+      </style>
+    
+
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+        
+      <title>
+        Camera?lense
+      </title>
+    </head>
+    <body>
+
+      <!-----------------------------------------header-------------------------------------------------------------->
+      
+      <header>
+        <div class="row" style="background-color: #2C4466;"><!-- Create a row within the header and set background colour to match logo-->
+
+          <div class="col-lg"><!--Create a column in the header and insert company logoadjusting width and setting height to auto-->
+            <a href=""><img src="{% static 'assets/product_page/logo.png' %}" style="width: 50px;height: auto;"></a>
+          </div>
+
+          <div class="col-lg-9"></div><!--Blank column to fill in middle of row-->
+
+          <div class="col-lg mt-1"  style="text-align: end;"><!--Create a column on the right of th page and create a login button-->
+            <a href="{% url 'login' %}">
+              <button type="button" class="btn btn-light">Login</button>
+            </a>
+          </div>
+          <div class="col-lg mt-1 me-1"  style="text-align: end;"><!--Create a column on the right of th page and create a login button-->
+            <a href="{% url 'authentication:logout' %}">
+              <button type='button' class='btn btn-light'>logout</button>
+            </a>
+            
+          </div>
+          
+        </div>
+      </header>
+      
+     
+
+      <!-----------------------------------------start of carousel-------------------------------------------------------------->
+      <!--Carousel structure taken from https://getbootstrap.com/docs/5.0/components/carousel/  -->
+      <!--I adapted this structure to include linked buttons, as well as removing the 'd-none' from the captions to ensure captions still display when screen is minimized-->
+      
+        <div id="carousel" class="carousel slide" data-bs-ride="carousel"><!--Decalre start of carousel-->
+
+          <div class="carousel-inner"><!--declare the carousel inner, where images and text will be dsplayed-->
+
+            <div class="carousel-item active c-item"><!--First carousel slide-->
+              <img src="{% static 'assets/product_page/camera_1.jpg' %}" class="d-block w-100 c-image" alt="..."><!--Insert product image-->
+
+              <div class="carousel-caption "><!--Write a heading and caption for th slide-->
+                <p class="text-uppercase fw-bolder">Cameras</p>
+                <p>Digital and film cameras</p>
+
+                <a href="#cameras">
+                  <button type="button" class="btn btn-primary">Browse</button><!--Creates a button and links it to the relevant point on the page-->
+                </a>
+              </div>
+            </div>
+
+            <!-- second carousel slide-->
+            <div class="carousel-item  c-item">
+              <img src="{% static 'assets/product_page/accessories.jpg' %}" class="d-block w-100 c-image" alt="...">
+              <div class="carousel-caption ">
+                <p class="text-uppercase fw-bolder">Accessories</p>
+                <p>All the bits and bobs to make your shoots easier</p>
+                <a href="#accessories">
+                  <button type="button" class="btn btn-primary">Browse</button>
+                </a>
+              </div>
+            </div>
+
+            <!--Third carousel slide-->
+            <div class="carousel-item c-item">
+              <img src="{% static 'assets/product_page/product_lense2.jpg' %}" class="d-block w-100 c-image" alt="...">
+              <div class="carousel-caption ">
+                <p class="text-uppercase fw-bolder">Lenses</p>
+                <p>A selection of lenses to meet your every need</p>
+                <a href="#lenses">
+                  <button type="button" class="btn btn-primary">Browse</button>
+                </a>
+              </div>
+            </div>
+
+            <!--Fourth carousel slide-->
+            <div class="carousel-item c-item">
+              <img src="{% static 'assets/product_page/c_film.jpg' %}" class="d-block w-100 c-image" alt="...">
+              <div class="carousel-caption  ">
+                <p class="text-uppercase fw-bolder">Film</p>
+                <p style="color: rgb(55, 52, 48);">For that old school feel</p><!--changed text colour to be more readable against background-->
+                <a href="#film">
+                  <button type="button" class="btn btn-primary">Browse</button>
+                </a>
+              </div>
+            </div>
+
+          </div>
+
+          <!--Creates a button for moving slides forwards of backwards-->
+        
+          <button class="carousel-control-prev" type="button" data-bs-target="#carousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+
+          <!--Creates indcators to show which slide you are currently on-->
+          <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+            <button type="button" data-bs-target="#carousel" data-bs-slide-to="3" aria-label="Slide 4"></button>
+          </div>
+        </div>
+
+      <!----------------------------------------------------Product cards----------------------------------------------------------------------------------->
+      <!--Product card structure taken from https://getbootstrap.com/docs/5.0/components/card/  -->
+
+
+      <!--First row products-->
+      <div class="row" id="cameras" style="background-color: rgb(74, 76, 78);align-items: center;"><!--Decalare a row to hold all related product cards, and set background color-->
+        <h3 class="product_heading fw-bolder"  style="text-align: center;">Cameras</h3><!--Write heading for the row-->
+
+        
+        <div class="col-lg ms-5"><!--Declare a column to hold singular card-->
+
+          <div class="card mt-4 mb-4" style="width: 18rem;"><!--Declare the card and specify width, as well as adding a margin to the top and bottom-->
+            <img src="{% static 'assets/product_page/camera_1.jpg' %}" class="card-img-top" alt="..."><!--Insert the product image-->
+
+            <div class="card-body"><!--Declare the body of the card, where your text will be held-->
+
+              <h4 class="card-heading"><u>Sony XT20</u></h4><!--Write the product name as an underlined heading-->
+              <p class="card-text">Lightwehight and reliable</p><!--A short description of the product and its price in paragraphs-->
+              <p class="card-text">R5 000</p>
+
+              <div class="col text-center"><!--In the bottom centre of the card create a button for enquireing the product-->
+                <a href="{% url 'create_query' %}">
+                  <button type="button" class="btn btn-warning" >enquire</button><!--Used a warning button for style preferance-->
+                </a>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg ms-5">
+          <div class="card mt-4 mb-4" style="width: 18rem;">
+            <img src="{% static 'assets/product_page/camera_2.jpg' %}" class="card-img-top" alt="...">
+            <div class="card-body">
+
+              <h4 class="card-heading"><u>Canon R52S</u></h4>
+              <p class="card-text">For more professional shots</p>
+              <p class="card-text">R7 800</p>
+              <div class="cl text-center">
+                <a href="{% url 'create_query' %}">
+                  <button type="button" class="btn btn-warning" >enquire</button><!--Used a warning button for style preferance-->
+                </a>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg ms-5 ">
+          <div class="card mt-4 mb-4" style="width: 18rem;">
+            <img src="{% static 'assets/product_page/camera_3.jpg' %}" class="card-img-top" alt="...">
+            <div class="card-body">
+
+              <h4 class="card-heading"><u>Canon P90</u></h4>
+              <p class="card-text">For the Journeyman photographer.</p>
+              <p class="card-text">R12 500</p>
+              <div class="col text-center">
+                <a href="{% url 'create_query' %}">
+                  <button type="button" class="btn btn-warning" >enquire</button><!--Used a warning button for style preferance-->
+                </a>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+      </div><!--End of row-->
+
+      <!-- Second row products-->
+      <div class="row" id="accessories" style="background-color: rgb(130, 123, 115);">
+        <h3 class="product_heading fw-bolder"  style="text-align: center;">Accessories</h3>
+
+
+        <div class="col-lg ms-5">
+          <div class="card mt-4 mb-4" style="width: 18rem;">
+            <img src="{% static 'assets/product_page/Tripod.jpg' %}" class="card-img-top" alt="...">
+            <div class="card-body">
+
+              <h4 class="card-heading"><u>Portable Tripod</u></h4>
+              <p class="card-text">For stability anytime anywhere</p>
+              <p class="card-text">R850</p>
+              <div class="col text-center">
+                <a href="{% url 'create_query' %}">
+                  <button type="button" class="btn btn-warning" >enquire</button><!--Used a warning button for style preferance-->
+                </a>
+              </div>      
+
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg ms-5">
+          <div class="card mt-4 mb-4" style="width: 18rem;">
+            <img src="{% static 'assets/product_page/gimbal.jpg' %}" class="card-img-top" alt="...">
+            <div class="card-body">
+
+              <h4 class="card-heading"><u>Gimbal</u></h4>
+              <p class="card-text">For those movement shots</p>
+              <p class="card-text">R1 200</p>
+              <div class="col text-center">
+                <a href="{% url 'create_query' %}">
+                  <button type="button" class="btn btn-warning" >enquire</button><!--Used a warning button for style preferance-->
+                </a>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg ms-5">
+          <div class="card mt-4 mb-4" style="width: 18rem;">
+            <img src="{% static 'assets/product_page/SD_card2.jpg' %}" class="card-img-top" alt="...">
+            <div class="card-body">
+
+              <h4 class="card-heading"><u>Lexar SD card</u></h4>
+              <p class="card-text">To stall all your projects</p>
+              <p class="card-text">R300</p>
+              <div class="col text-center">
+                <a href="{% url 'create_query' %}">
+                  <button type="button" class="btn btn-warning" >enquire</button><!--Used a warning button for style preferance-->
+                </a>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!--Third row products-->
+      <div class="row" id="lenses" style="background-color: rgb(74, 76, 78);">
+        <h3 class="product_heading fw-bolder"  style="text-align: center;">Lenses</h3>
+
+        <div class="col-lg ms-5">
+          <div class="card mt-4 mb-4" style="width: 18rem;">
+            <img src="{% static 'assets/product_page/product_lense1.jpg' %}" class="card-img-top" alt="...">
+            <div class="card-body">
+
+              <h4 class="card-heading"><u>Kodak lense pack</u></h4>
+              <p class="card-text">Variety of uses</p>
+              <p class="card-text">R4 000</p>
+              <div class="col text-center">
+                <a href="{% url 'create_query' %}">
+                  <button type="button" class="btn btn-warning" >enquire</button><!--Used a warning button for style preferance-->
+                </a>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+
+        <div class="col-lg ms-5">
+          <div class="card mt-4 mb-4" style="width: 18rem;">
+            <img src="{% static 'assets/product_page/product_lense2.jpg' %}" class="card-img-top" alt="...">
+            <div class="card-body">
+
+              <h4 class="card-heading"><u>Canon lense pack</u></h4>
+              <p class="card-text"> For all your lense needs</p>
+              <p class="card-text">R5 000</p>
+              <div class="col text-center">
+                <a href="{% url 'create_query' %}">
+                  <button type="button" class="btn btn-warning" >enquire</button><!--Used a warning button for style preferance-->
+                </a>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg ms-5">
+          <div class="card mt-4 mb-4" style="width: 18rem;">
+            <img src="{% static 'assets/product_page/product_lense3.jpg' %}" class="card-img-top" alt="...">
+            <div class="card-body">
+
+              <h4 class="card-heading"><u>Sony wide lense</u></h4>
+              <p class="card-text">For seeing the bigger picture</p>
+              <p class="card-text">R1 000</p>
+              <div class="col text-center">
+                <a href="{% url 'create_query' %}">
+                  <button type="button" class="btn btn-warning" >enquire</button><!--Used a warning button for style preferance-->
+                </a>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    
+      <!--fourth row products-->
+      <div class="row" id="film" style="background-color: rgb(130, 123, 115);">
+        <h3 class="product_heading fw-bolder"  style="text-align: center;">Film Rolls</h3>
+
+
+        <div class="col-lg ms-5">
+          <div class="card mt-4 mb-4" style="width: 18rem;">
+            <img src="{% static 'assets/product_page/film_1.jpg' %}" class="card-img-top" alt="...">
+            <div class="card-body">
+
+              <h4 class="card-heading"><u>Kodak 400</u></h4>
+              <p class="card-text">400 quality shots</p>
+              <p class="card-text">R350</p>
+              <div class="col text-center">
+                <a href="{% url 'create_query' %}">
+                  <button type="button" class="btn btn-warning" >enquire</button><!--Used a warning button for style preferance-->
+                </a>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg ms-5">
+          <div class="card mt-4 mb-4" style="width: 18rem;">
+            <img src="{% static 'assets/product_page/film_2.jpg' %}" class="card-img-top" alt="...">
+            <div class="card-body">
+
+              <h4 class="card-heading"><u>Kodak 200</u></h4>
+              <p class="card-text">A quick 200 memories</p>
+              <p class="card-text">R200</p>
+              <div class="col text-center">
+                <a href="{% url 'create_query' %}">
+                  <button type="button" class="btn btn-warning" >enquire</button><!--Used a warning button for style preferance-->
+                </a>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg ms-5">
+          <div class="card mt-4 mb-4" style="width: 18rem;">
+            <img src="{% static 'assets/product_page/film_3.jpg' %}" class="card-img-top" alt="...">
+            <div class="card-body">
+
+              <h4 class="card-heading"><u>Variety pack</u></h4>
+              <p class="card-text">Get me pictures of spiderman!</p>
+              <p class="card-text">R650</p>
+              <div class="col text-center">
+                <a href="{% url 'create_query' %}">
+                  <button type="button" class="btn btn-warning" >enquire</button><!--Used a warning button for style preferance-->
+                </a>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!------------------------------------Footer--------------------------------------------------->
+      <!--Form structur taken from https://getbootstrap.com/docs/5.0/forms/overview/-->
+
+      <footer><!--Declare a footer-->
+        <div class="row" style="background-color: rgb(54, 62, 62);"> <!--Declare a row and set background colour-->
+
+          <div class="col-lg-2 ms-5" style="align-self:center;">
+            <a href="">
+              <img src="{% static 'assets/product_page/logo.png' %}" style="width: 200px;height: auto;"><!--Insert logo image and space appropriately-->
+            </a>
+          </div>
+          
+          <div class="col-lg"><!--declare column to hold form-->
+            <h3>Get in contact with us</h3><!--Give the form a heading-->
+
+            <form class="me-3 mb-3"><!--Create the form and space appropriately-->
+
+              <div class="mb-3"><!--Get input for the customers name-->
+                <label for="Customer_name" class="form-label">Full Name</label>
+                <input type="text" class="form-control" id="C_name" aria-describedby="Name">
+              </div>
+
+              <div class="mb-3"><!--Get input for the customers email address-->
+                <label for="email" class="form-label">Email <Address></Address></label>
+                <input type="email" class="form-control" id="Email">
+                <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+              </div>
+
+              <div class="mb-3 form-check"><!--Create a checkbox with typical message-->
+                <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                <label class="form-check-label" for="exampleCheck1">Receive promotional emails?</label>
+              </div>
+
+              
+              <button type="submit" class="btn btn-primary">Submit</button><!--Create sumbit button-->
+            </form>
+          </div>
+
+          <div class="col-lg-2"></div><!--create empty column to space the form away from the right side-->
+
+        </div><!--end of row-->
+
+      </footer><!--end of footer-->
+
+
+    </body><!--end of body-->
+
+
+
+</HTML>

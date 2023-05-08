@@ -1,0 +1,48 @@
+{% load static %}
+
+<html lang="en">
+<head>
+
+    <title>{% block title %}{% endblock title %}</title>
+</head>
+<header>
+    <div class="row" style="background-color: #2C4466;"><!-- Create a row within the header and set background colour to match logo-->
+
+        <div class="col-lg"><!--Create a column in the header and insert company logoadjusting width and setting height to auto-->
+        <a href=""><img src="{% static 'assets/personal_info/logo.png' %}" alt ='#' style="width: 50px;height: auto;"></a>
+        </div>
+
+        <div class="col-lg-10"></div><!--Blank column to fill in middle of row-->
+
+        <div class="col-lg mt-1 me-1"  style="text-align: end;"><!--Create a column on the right of th page and create a login button-->
+        <button type="button" class="btn btn-light">Login</button>
+        </div>
+        
+    </div>
+</header>
+<body>
+    {% block content %}
+    {% endblock content %}
+    
+</body>
+<footer><!--Declare a footer-->
+    <div class="row" style="background-color: rgb(54, 62, 62);"> <!--Declare a row and set background colour-->
+
+      <div class="col-lg-2 ms-5" style="align-self:center;">
+        <a>
+          <img src="{% static 'assets/personal_info/logo.png' %}" alt='#' style="width: 200px;height: auto;"><!--Insert logo image and space appropriately-->
+        </a>
+      </div>
+      
+      <div class="col-lg"><!--declare column to hold form-->
+        <h3>Get in contact with us</h3><!--Give the form a heading-->
+
+
+      </div>
+
+      <div class="col-lg-2"></div><!--create empty column to space the form away from the right side-->
+
+    </div><!--end of row-->
+
+  </footer><!--end of footer-->
+</html>

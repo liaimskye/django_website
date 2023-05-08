@@ -1,0 +1,29 @@
+.c-item{
+    height: 480px;
+}
+
+.c-image{
+    height: 100%;
+    object-fit: cover;
+}
+
+.me-0{
+    margin-right: 0;
+}
+
+
+/* Structure taken from https://codepen.io/areteika/pen/abPRxg */
+/* I changed it to just move the image slightly down to avoid complications with card borders */
+img.card-img-top {
+
+    float:down;
+      -webkit-transition: margin 0.5s ease-out;
+      -moz-transition: margin 0.5s ease-out;
+      -o-transition: margin 0.5s ease-out;
+  }
+  
+img.card-img-top:hover {
+    cursor:pointer;
+    margin-top: 5px;
+}
+

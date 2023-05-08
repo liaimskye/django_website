@@ -1,0 +1,36 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+        <title>
+            Home Page
+        </title>
+    </head>
+    <header>
+        <div class="row" style="background-color: #2C4466;"><!-- Create a row within the header and set background colour to match logo-->
+    
+            <div class="col-lg"><!--Create a column in the header and insert company logoadjusting width and setting height to auto-->
+            <a href="{% url 'landing' %}"><img src="{% static 'assets/personal_info/logo.png' %}" alt ='#' style="width: 50px;height: auto;"></a>
+            </div>
+    
+            <div class="col-lg-10"></div><!--Blank column to fill in middle of row-->
+    
+            <div class="col-lg mt-1 me-1"  style="text-align: end;"><!--Create a column on the right of th page and create a login button-->
+            <button type="button" class="btn btn-light">Login</button>
+            </div>
+            
+        </div>
+    </header>
+    <body style="background-color: rgb(74, 76, 78)">
+        <div class='row justify-content-center'>
+            <div class="card mt-4" style="width: 18rem;">
+                <div class="card-body">
+                    {% block content %}{% endblock content %}
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
